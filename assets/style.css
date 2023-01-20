@@ -46,20 +46,28 @@ main {
     line-height: 16px;
 }
 
-.entrou {
+.status {
     background-color: #dcdcdc;
+    padding-left: 15px;
+}
+
+.normal {
+    background-color: #ffffff;
+    padding-left: 15px;
+}
+
+.reservada {
+    background-color: #ffdede;
+    padding-left: 15px;
+}
+
+.hora {
+    font-weight: 400;
+    color: #959292;
 }
 
 .mensagem {
-    background-color: #ffffff;
-}
-
-.direct {
-    background-color: #ffdede;
-}
-
-.saiu {
-    background-color: #dcdcdc;
+    font-weight: 400;
 }
 
 .div-enviar-mensagem {
