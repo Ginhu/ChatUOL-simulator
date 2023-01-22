@@ -117,7 +117,7 @@ function sendMsg(param) {
     const histMsg = msgData.filter(history);
 
     function history(el) {
-        if (el.to == "Todos") {
+        if (el.to == "Todos" || el.to != "Todos") {
             return true;
         }
     }
