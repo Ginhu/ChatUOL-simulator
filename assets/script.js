@@ -134,6 +134,11 @@ function sendMsg(param) {
             <p><span class="hora">${histMsg[i].time}</span> ${histMsg[i].from} <span class="mensagem"> para</span> ${histMsg[i].to + ":"} <span class="mensagem">${histMsg[i].text}</span></p>
             </div>`;
             time = histMsg[i].time;
+        } else {
+            document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem reservada" data-test="message">
+            <p><span class="hora">${histMsg[i].time}</span> ${histMsg[i].from} <span class="mensagem"> para</span> ${histMsg[i].to + ":"} <span class="mensagem">${histMsg[i].text}</span></p>
+            </div>`;
+            time = histMsg[i].time;
         }
     }
 
