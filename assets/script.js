@@ -40,7 +40,7 @@ function recentMsgs(param) {
     for (let i = 0; i < newArray.length; i++) {
         if (newArray[i].type == "message") {
             const view = document.querySelector('.mensagens');
-            view.innerHTML += `<div class="div-mensagem normal">
+            view.innerHTML += `<div class="div-mensagem normal" data-test="message">
             <p><span class="hora">${newArray[i].time}</span> ${newArray[i].from} <span class="mensagem"> para</span> ${newArray[i].to + ":"} <span class="mensagem">${newArray[i].text}</span></p>
             </div>`;
             view.lastElementChild.scrollIntoView({behavior: 'smooth'});
@@ -48,7 +48,7 @@ function recentMsgs(param) {
 
         } else if (newArray[i].type == "status") {
             const view = document.querySelector('.mensagens');
-            view.innerHTML += `<div class="div-mensagem status">
+            view.innerHTML += `<div class="div-mensagem status" data-test="message">
             <p><span class="hora">${newArray[i].time}</span> ${newArray[i].from}  <span class="mensagem">${newArray[i].text}</span></p>
             </div>`;
             view.lastElementChild.scrollIntoView({behavior: 'smooth'});
@@ -56,7 +56,7 @@ function recentMsgs(param) {
             
         } else if (newArray[i].to == nomeDigitado) {
             const view = document.querySelector('.mensagens');
-            view.innerHTML += `<div class="div-mensagem reservada">
+            view.innerHTML += `<div class="div-mensagem reservada" data-test="message">
             <p><span class="hora">${newArray[i].time}</span> ${newArray[i].from} <span class="mensagem"> para</span> ${newArray[i].to + ":"} <span class="mensagem">${newArray[i].text}</span></p>
             </div>`;
             view.lastElementChild.scrollIntoView({behavior: 'smooth'});
@@ -121,23 +121,19 @@ function sendMsg(param) {
 
     if (newArray[0].type == "status") {
 
-        document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem status">
+        document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem status" data-test="message">
         <p><span class="hora">${newArray[0].time}</span> ${newArray[0].from}  <span class="mensagem">${newArray[0].text}</span></p>
         </div>`;
         time = newArray[0].time;
 
     } else {
     
-        document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem normal">
+        document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem normal" data-test="message">
         <p><span class="hora">${newArray[0].time}</span> ${newArray[0].from} <span class="mensagem"> para</span> ${newArray[0].to + ":"} <span class="mensagem">${newArray[0].text}</span></p>
         </div>`;
         time = newArray[0].time;
     
     }
-
-
-    
-    
 } 
 
 function errorCatch(param) {
