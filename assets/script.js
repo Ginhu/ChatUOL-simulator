@@ -31,6 +31,8 @@ function recentMsgs(param) {
     msgLoad = param.data;
     const newArray = msgLoad.filter(chatArray);
 
+    document.querySelector('.mensagens').innerHTML = "";
+
     function chatArray (el) {
         if(el.time > time && (el.to == "Todos" || el.to == nomeDigitado)) {
             return true;
@@ -112,6 +114,28 @@ function sendMsg(param) {
 
     msgData = param.data;
     const newArray = msgData.filter(selectMsg);
+    const histMsg = msgData.filter(history);
+
+    function history(el) {
+        if (el.to == "Todos") {
+            return true;
+        }
+    }
+
+    for (let i = 0; i < histMsg.length; i++) {
+
+        if (histMsg[i].to == "Todos" && histMsg[i].type == "status") {
+            document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem status" data-test="message">
+            <p><span class="hora">${histMsg[i].time}</span> ${histMsg[i].from} <span class="mensagem"> para</span> ${histMsg[i].to + ":"} <span class="mensagem">${histMsg[i].text}</span></p>
+            </div>`;
+            time = histMsg[i].time;
+        } else if (histMsg[i].to == "Todos" && histMsg[i].type == "message") {
+            document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem normal" data-test="message">
+            <p><span class="hora">${histMsg[i].time}</span> ${histMsg[i].from} <span class="mensagem"> para</span> ${histMsg[i].to + ":"} <span class="mensagem">${histMsg[i].text}</span></p>
+            </div>`;
+            time = histMsg[i].time;
+        }
+    }
 
     function selectMsg(el){
         if (el.text == mensagem.text && el.from == mensagem.from) {
@@ -126,6 +150,12 @@ function sendMsg(param) {
         </div>`;
         time = newArray[0].time;
 
+    } else if (newArray[0].type == "message" && newArray[0].to != "Todos") {
+        document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem reservada" data-test="message">
+        <p><span class="hora">${newArray[0].time}</span> ${newArray[0].from} <span class="mensagem"> para</span> ${newArray[0].to + ":"} <span class="mensagem">${newArray[0].text}</span></p>
+        </div>`;
+        time = newArray[0].time;
+
     } else {
     
         document.querySelector('.mensagens').innerHTML += `<div class="div-mensagem normal" data-test="message">
@@ -137,9 +167,9 @@ function sendMsg(param) {
 } 
 
 function errorCatch(param) {
-    alert(`Algo deu errado! \n
+    console.log(`Algo deu errado! \n
     O erro foi ${param} \n
     A página vai ser recarregada!`);
-    window.location.reload();
+    /* window.location.reload(); */
 
 }
