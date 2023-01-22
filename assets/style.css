@@ -10,6 +10,9 @@
     width: 100%;
     background-color: #ffffff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
 
     display: flex;
     justify-content: space-between;
@@ -29,21 +32,30 @@
 
 main {
     width: 100%;
-    height: 100vh;
-    padding-top:26px ;
+    height: 85vh;
+    padding-top:100px ;
     background-color: #e5e5e5;
+    /* overflow-y: scroll; */
+}
+
+.mensagens {
+    width: 100%;
+    height: 85vh;
 }
 
 .div-mensagem {
     width: 100%;
-    height: 40px;
+    min-height: 40px;
+    height: auto;
     display: flex;
     align-items: center;
-
+    word-wrap: break-word;
 
     font-weight: 700;
     font-size: 14px;
     line-height: 16px;
+    margin: 2px 0;
+    padding: 10px 0;
 }
 
 .status {
@@ -68,6 +80,7 @@ main {
 
 .mensagem {
     font-weight: 400;
+    word-wrap: break-word;
 }
 
 .div-enviar-mensagem {
